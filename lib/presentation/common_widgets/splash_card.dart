@@ -1,4 +1,5 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/presentation/common_widgets/custom_button.dart';
 import 'package:djarna/core/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,27 +59,10 @@ class SplashCardWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.h),
-              SizedBox(
-                width: double.infinity,
-                height: 46.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.buttonPrimary,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.r),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                      fontSize: AppTypography.h2,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
+              CustomButton(
+                text: 'Get Started',
+                onPressed: () {},
+                borderRadius: 16.r,
               ),
               SizedBox(height: 8.h),
               TextButton(
