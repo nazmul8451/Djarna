@@ -1,4 +1,5 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/core/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +14,7 @@ class SplashCardWidget extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(24.r)),
@@ -32,7 +33,7 @@ class SplashCardWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   style: TextStyle(
-                    fontSize: 24.sp,
+                    fontSize: AppTypography.h1,
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF333333),
                   ),
@@ -46,20 +47,20 @@ class SplashCardWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 6.h),
               Text(
                 'Discover great deals, trusted sellers, and items you\'ll love—all in one place.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: AppTypography.bodySmall,
                   color: Colors.black54,
                   height: 1.5,
                 ),
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 16.h),
               SizedBox(
                 width: double.infinity,
-                height: 56.h,
+                height: 46.h,
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -73,7 +74,7 @@ class SplashCardWidget extends StatelessWidget {
                   child: Text(
                     'Get Started',
                     style: TextStyle(
-                      fontSize: 16.sp,
+                      fontSize: AppTypography.h2,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -85,7 +86,7 @@ class SplashCardWidget extends StatelessWidget {
                 child: Text(
                   'SIGN IN',
                   style: TextStyle(
-                    fontSize: 14.sp,
+                    fontSize: AppTypography.bodySmall,
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF333333),
                     letterSpacing: 1.2,
