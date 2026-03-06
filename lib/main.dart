@@ -3,7 +3,5 @@ import 'package:djarna/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(DevicePreview(enabled: false, builder: (context) => const Djarna()));
+  runApp(const Djarna());
 }
-
-

@@ -1,6 +1,7 @@
 import 'package:djarna/core/constants/app_colors.dart';
 import 'package:djarna/presentation/common_widgets/custom_button.dart';
 import 'package:djarna/core/constants/app_sizes.dart';
+import 'package:djarna/presentation/features/auth/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,10 +16,10 @@ class SplashCardWidget extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(24.r)),
+            borderRadius: const BorderRadius.all(Radius.circular(24)),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.05),
@@ -48,7 +49,7 @@ class SplashCardWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 6.h),
+              const SizedBox(height: 6),
               Text(
                 'Discover great deals, trusted sellers, and items you\'ll love—all in one place.',
                 textAlign: TextAlign.center,
@@ -58,15 +59,19 @@ class SplashCardWidget extends StatelessWidget {
                   height: 1.5,
                 ),
               ),
-              SizedBox(height: 16.h),
+              const SizedBox(height: 16),
               CustomButton(
                 text: 'Get Started',
-                onPressed: () {},
-                borderRadius: 16.r,
+                onPressed: () {
+                  Navigator.pushNamed(context, SignInScreen.name);
+                },
+                borderRadius: 16,
               ),
-              SizedBox(height: 8.h),
+              const SizedBox(height: 8),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, SignInScreen.name);
+                },
                 child: Text(
                   'SIGN IN',
                   style: TextStyle(

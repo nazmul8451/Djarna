@@ -1,3 +1,5 @@
+import 'package:djarna/core/routes/app_routes.dart';
+import 'package:djarna/presentation/features/auth/sign_in_screen.dart';
 import 'package:djarna/presentation/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,24 +10,17 @@ class Djarna extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          useInheritedMediaQuery: true,
-          theme: ThemeData(
-            primaryColor: Colors.blue,
-            useMaterial3: true,
-            textSelectionTheme: const TextSelectionThemeData(
-              cursorColor: Colors.black54,
-            ),
-          ),
-          home: const SplashScreen(),
-        );
-      },
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        useMaterial3: true,
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Colors.black54,
+        ),
+      ),
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      initialRoute: SplashScreen.name,
     );
   }
 }

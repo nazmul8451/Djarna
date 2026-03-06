@@ -36,7 +36,7 @@ class CustomTextField extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: 8),
         TextFormField(
           controller: controller,
           obscureText: isPassword,
@@ -49,31 +49,31 @@ class CustomTextField extends StatelessWidget {
               fontSize: AppTypography.bodyMedium,
               color: Colors.black38,
             ),
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 14.h,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 14,
             ),
             suffixIcon: suffixIcon,
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
                 color: AppColors.buttonPrimary.withOpacity(0.3),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(
                 color: AppColors.buttonPrimary,
                 width: 1.5,
               ),
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.redAccent, width: 1),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.redAccent, width: 1.5),
             ),
             filled: true,

@@ -15,45 +15,44 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundLight,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 40.h),
-              Image.asset('assets/images/djarna_logo.png', height: 100.h),
-              SizedBox(height: 48.h),
-              Text(
+              const SizedBox(height: 40),
+              Image.asset('assets/images/djarna_logo.png', height: 150.h, width:150.w),
+              const SizedBox(height: 48),
+              const Text(
                 'Sign In',
                 style: TextStyle(
-                  fontSize: 32.sp,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   letterSpacing: -0.5,
                 ),
               ),
-              SizedBox(height: 8.h),
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 'Access your premium marketplace',
-                style: TextStyle(fontSize: 16.sp, color: Colors.black54),
+                style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
-              SizedBox(height: 40.h),
-              CustomTextField(
+              const SizedBox(height: 40),
+              const CustomTextField(
                 label: 'Phone Number',
-                hint:
-                    'Enter your email', // Match the hint in mockup even if label says Phone
+                hint: 'Enter your email',
                 keyboardType: TextInputType.emailAddress,
               ),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               Stack(
                 children: [
-                  CustomTextField(
+                  const CustomTextField(
                     label: 'Password',
                     hint: 'Enter your password',
                     isPassword: true,
                     suffixIcon: Icon(
                       Icons.visibility_outlined,
                       color: Colors.black38,
-                      size: 20.sp,
+                      size: 20,
                     ),
                   ),
                   Positioned(
@@ -69,7 +68,7 @@ class SignInScreen extends StatelessWidget {
                       child: Text(
                         'Forgot?',
                         style: TextStyle(
-                          fontSize: 12.sp,
+                          fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: AppColors.buttonPrimary,
                         ),
@@ -78,23 +77,23 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 40.h),
+              const SizedBox(height: 40),
               CustomButton(
                 text: 'Sign in',
                 onPressed: () {},
-                fontSize: 18.sp,
-                height: 56.h,
+                fontSize: 18,
+                height: 56,
               ),
-              SizedBox(height: 40.h),
+              const SizedBox(height: 40),
               Row(
                 children: [
                   const Expanded(child: Divider(color: Colors.black12)),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
                       'OR SIGN IN WITH',
                       style: TextStyle(
-                        fontSize: 12.sp,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: Colors.black54,
                         letterSpacing: 1,
@@ -104,33 +103,35 @@ class SignInScreen extends StatelessWidget {
                   const Expanded(child: Divider(color: Colors.black12)),
                 ],
               ),
-              SizedBox(height: 32.h),
+              const SizedBox(height: 32),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _SocialButton(
+                  const _SocialButton(
                     iconPath: 'assets/images/google_icon.png',
-                  ), // Placeholder paths
-                  SizedBox(width: 20.w),
-                  _SocialButton(iconPath: 'assets/images/facebook_icon.png'),
-                  SizedBox(width: 20.w),
-                  _SocialButton(iconPath: 'assets/images/apple_icon.png'),
+                  ),
+                  const SizedBox(width: 20),
+                  const _SocialButton(
+                    iconPath: 'assets\images\logos_facebook.png',
+                  ),
+                  const SizedBox(width: 20),
+                  const _SocialButton(iconPath: 'assets/images/apple_icon.png'),
                 ],
               ),
-              SizedBox(height: 40.h),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Don\'t have an account? ',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.black54),
+                    style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
                       'Create account',
                       style: TextStyle(
-                        fontSize: 14.sp,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: AppColors.buttonPrimary,
                       ),
@@ -138,7 +139,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 24.h),
+              const SizedBox(height: 24),
             ],
           ),
         ),
@@ -154,8 +155,8 @@ class _SocialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 56.w,
-      height: 56.w,
+      width: 56,
+      height: 56,
       decoration: BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
@@ -168,10 +169,10 @@ class _SocialButton extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(
+      child: const Center(
         child: Icon(
           Icons.star,
-          size: 24.sp,
+          size: 24,
           color: Colors.grey,
         ), // Placeholder for actual icons
       ),
