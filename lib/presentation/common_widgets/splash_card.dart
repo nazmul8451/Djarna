@@ -1,9 +1,8 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/core/routes/app_routes.dart';
 import 'package:djarna/presentation/common_widgets/custom_button.dart';
 import 'package:djarna/core/constants/app_sizes.dart';
-import 'package:djarna/presentation/features/auth/sign_in_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashCardWidget extends StatelessWidget {
   const SplashCardWidget({super.key});
@@ -63,14 +62,14 @@ class SplashCardWidget extends StatelessWidget {
               CustomButton(
                 text: 'Get Started',
                 onPressed: () {
-                  Navigator.pushNamed(context, SignInScreen.name);
+                  Navigator.pushNamed(context, AppRoutes.sign_in);
                 },
                 borderRadius: 16,
               ),
               const SizedBox(height: 8),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, SignInScreen.name);
+                  Navigator.pushNamed(context, AppRoutes.sign_in);
                 },
                 child: Text(
                   'SIGN IN',

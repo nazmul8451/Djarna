@@ -5,10 +5,10 @@ import 'package:djarna/presentation/common_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
-  static const String name = '/sign-in';
+  static const String name = '/sign-up';
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class SignInScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               Image.asset(
                 'assets/images/djarna_logo.png',
                 height: 200.h,
@@ -28,7 +28,7 @@ class SignInScreen extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               const Text(
-                'Sign In',
+                'Sign Up',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -43,48 +43,21 @@ class SignInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               const CustomTextField(
-                label: 'Phone Number',
-                hint: 'Enter your email',
-                keyboardType: TextInputType.emailAddress,
+                label: 'Phone number',
+                hint: 'Enter your phone number',
+                keyboardType: TextInputType.phone,
               ),
-              const SizedBox(height: 20),
-              Stack(
-                children: [
-                  const CustomTextField(
-                    label: 'Password',
-                    hint: 'Enter your password',
-                    isPassword: true,
-                    suffixIcon: Icon(
-                      Icons.visibility_outlined,
-                      color: Colors.black38,
-                      size: 20,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      child: Text(
-                        'Forgot?',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.buttonPrimary,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              const SizedBox(height: 8),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'We\'ll send a 6-digit verification code.',
+                  style: TextStyle(fontSize: 12, color: Colors.black45),
+                ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 32),
               CustomButton(
-                text: 'Sign in',
+                text: 'Send code',
                 onPressed: () {},
                 fontSize: 18,
                 height: 56,
@@ -128,18 +101,18 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Don\'t have an account? ',
+                    'Already have an account? ',
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushReplacementNamed(
                         context,
-                        AppRoutes.sign_up,
+                        AppRoutes.sign_in,
                       );
                     },
                     child: Text(
-                      'Create account',
+                      'Login',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
