@@ -58,7 +58,9 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: 32),
               CustomButton(
                 text: 'Send code',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.verify_number);
+                },
                 fontSize: 18,
                 height: 56,
               ),
