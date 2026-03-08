@@ -10,7 +10,11 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final TextInputType keyboardType;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final String? Function(String?)? validator;
+  final double? borderRadius;
+  final Color? fillColor;
+  final bool showLabel;
 
   const CustomTextField({
     super.key,
@@ -20,7 +24,11 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.suffixIcon,
+    this.prefixIcon,
     this.validator,
+    this.borderRadius,
+    this.fillColor,
+    this.showLabel = true,
   });
 
   @override
@@ -28,15 +36,17 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: AppTypography.bodyMedium,
-            fontWeight: FontWeight.w500,
-            color: Colors.black87,
+        if (showLabel) ...[
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: AppTypography.bodyMedium,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87,
+            ),
           ),
-        ),
-        SizedBox(height: 8),
+          SizedBox(height: 8),
+        ],
         TextFormField(
           controller: controller,
           obscureText: isPassword,
@@ -54,30 +64,31 @@ class CustomTextField extends StatelessWidget {
               vertical: 14,
             ),
             suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon,
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(borderRadius ?? 12),
               borderSide: BorderSide(
-                color: AppColors.buttonPrimary.withOpacity(0.3),
+                color: AppColors.buttonPrimary.withOpacity(0.1),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(borderRadius ?? 12),
               borderSide: const BorderSide(
                 color: AppColors.buttonPrimary,
                 width: 1.5,
               ),
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(borderRadius ?? 12),
               borderSide: const BorderSide(color: Colors.redAccent, width: 1),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(borderRadius ?? 12),
               borderSide: const BorderSide(color: Colors.redAccent, width: 1.5),
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: fillColor ?? Colors.white,
           ),
         ),
       ],
