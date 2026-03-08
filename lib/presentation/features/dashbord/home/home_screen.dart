@@ -1,5 +1,6 @@
 import 'package:djarna/core/constants/app_colors.dart';
 import 'package:djarna/presentation/common_widgets/custom_text_field.dart';
+import 'package:djarna/presentation/common_widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,18 +35,121 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(height: 10.h),
                 _buildAppBar(),
-                SizedBox(height: 25.h),
+                SizedBox(height: 16.h),
                 _buildSearchSection(),
-                SizedBox(height: 25.h),
+                SizedBox(height: 16.h),
                 _buildCategorySection(),
-                SizedBox(height: 25.h),
+                SizedBox(height: 16.h),
                 _buildPromoBanner(),
+                SizedBox(height: 16.h),
+                _buildSectionHeader("Articles populaires"),
+                SizedBox(height: 16.h),
+                _buildProductList(),
                 SizedBox(height: 20.h),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          "Voir tout",
+          style: TextStyle(fontSize: 14.sp, color: AppColors.buttonPrimary),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductList() {
+    final products = [
+      {
+        'title': 'Sneakers de luxe',
+        'price': '45,000',
+        'oldPrice': '60,000 FCFA',
+        'category': 'Vêtements',
+        'discount': '-25%',
+        'location': 'Casablanca',
+        'image': 'assets/images/Sneakers.png',
+      },
+      {
+        'title': 'Session Spa Zen',
+        'price': '15,000',
+        'oldPrice': '25,000 FCFA',
+        'category': 'Bien-être',
+        'discount': '-40%',
+        'location': 'Marrakech',
+        'image': 'assets/images/Spa.png',
+      },
+      {
+        'title': 'Services Beauté',
+        'price': '10,000',
+        'oldPrice': '15,000 FCFA',
+        'category': 'Services',
+        'discount': '-33%',
+        'location': 'Rabat',
+        'image': 'assets/images/ServicesBeauté.png',
+      },
+      {
+        'title': 'Robe longue en li...',
+        'price': '3,499',
+        'oldPrice': '19,000 FCFA',
+        'category': 'Mode',
+        'discount': '-10%',
+        'location': 'Dakar',
+        'image': 'assets/images/Robelongue.png',
+      },
+      {
+        'title': 'Casque Bluetooth',
+        'price': '25,000',
+        'oldPrice': '35,000 FCFA',
+        'category': 'Tech',
+        'discount': '-28%',
+        'location': 'Abidjan',
+        'image': 'assets/images/Headphones.png',
+      },
+      {
+        'title': 'Cosmétique Bio',
+        'price': '8,500',
+        'oldPrice': '12,000 FCFA',
+        'category': 'Beauté',
+        'discount': '-30%',
+        'location': 'Lomé',
+        'image': 'assets/images/Cosmétique.png',
+      },
+    ];
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 15.w,
+        mainAxisSpacing: 15.h,
+        mainAxisExtent: 310.h,
+      ),
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        final product = products[index];
+        return ProductCard(
+          title: product['title'] as String,
+          price: product['price'] as String,
+          oldPrice: product['oldPrice'] as String,
+          category: product['category'] as String,
+          discount: product['discount'] as String,
+          location: product['location'] as String,
+          imageUrl: product['image'] as String,
+        );
+      },
     );
   }
 

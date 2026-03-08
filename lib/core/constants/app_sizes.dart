@@ -1,5 +1,3 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 /// Central typography constants for the Photopia application.
 /// Uses [flutter_screenutil] to ensure responsiveness across all devices.
 class AppTypography {
