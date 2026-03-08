@@ -85,7 +85,7 @@ class SignInScreen extends StatelessWidget {
               const SizedBox(height: 40),
               CustomButton(
                 text: 'Sign in',
-                onPressed: () {},
+                onPressed: ()=> Navigator.pushNamed(context, AppRoutes.custom_bottom_bar),
                 fontSize: 18,
                 height: 56,
               ),
