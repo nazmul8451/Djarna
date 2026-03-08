@@ -1,3 +1,4 @@
+import 'package:djarna/core/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -172,7 +173,7 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    "FCFA",
+                    AppStrings.currency,
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.bold,

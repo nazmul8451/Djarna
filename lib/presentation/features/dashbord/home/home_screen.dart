@@ -1,4 +1,5 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/core/constants/app_strings.dart';
 import 'package:djarna/presentation/common_widgets/custom_text_field.dart';
 import 'package:djarna/presentation/common_widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +14,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   // Dynamic state for filtering
-  String _selectedCategory = 'Tous';
+  String _selectedCategory = AppStrings.all;
 
   // Mock category data (this would come from an API later)
   final List<Map<String, dynamic>> _categories = [
-    {'name': 'Tous', 'count': '42', 'icon': Icons.grid_view_rounded},
-    {'name': 'Vêtements', 'count': '42', 'icon': Icons.person_outline},
-    {'name': 'Électronique', 'count': '12', 'icon': Icons.person_outline},
+    {'name': AppStrings.all, 'count': '42', 'icon': Icons.grid_view_rounded},
+    {'name': AppStrings.clothing, 'count': '42', 'icon': Icons.person_outline},
+    {
+      'name': AppStrings.electronics,
+      'count': '12',
+      'icon': Icons.person_outline,
+    },
   ];
 
   @override
@@ -42,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 16.h),
                 _buildPromoBanner(),
                 SizedBox(height: 16.h),
-                _buildSectionHeader("Articles populaires"),
+                _buildSectionHeader(AppStrings.articlesPopulaires),
                 SizedBox(height: 16.h),
                 _buildProductList(),
                 SizedBox(height: 20.h),
@@ -63,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
         ),
         Text(
-          "Voir tout",
+          AppStrings.voirTout,
           style: TextStyle(fontSize: 14.sp, color: AppColors.buttonPrimary),
         ),
       ],
@@ -75,8 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         'title': 'Sneakers de luxe',
         'price': '45,000',
-        'oldPrice': '60,000 FCFA',
-        'category': 'Vêtements',
+        'oldPrice': '60,000 ${AppStrings.currency}',
+        'category': AppStrings.clothing,
         'discount': '-25%',
         'location': 'Casablanca',
         'image': 'assets/images/Sneakers.png',
@@ -84,8 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         'title': 'Session Spa Zen',
         'price': '15,000',
-        'oldPrice': '25,000 FCFA',
-        'category': 'Bien-être',
+        'oldPrice': '25,000 ${AppStrings.currency}',
+        'category': AppStrings.wellbeing,
         'discount': '-40%',
         'location': 'Marrakech',
         'image': 'assets/images/Spa.png',
@@ -93,8 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         'title': 'Services Beauté',
         'price': '10,000',
-        'oldPrice': '15,000 FCFA',
-        'category': 'Services',
+        'oldPrice': '15,000 ${AppStrings.currency}',
+        'category': AppStrings.services,
         'discount': '-33%',
         'location': 'Rabat',
         'image': 'assets/images/ServicesBeauté.png',
@@ -102,8 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         'title': 'Robe longue en li...',
         'price': '3,499',
-        'oldPrice': '19,000 FCFA',
-        'category': 'Mode',
+        'oldPrice': '19,000 ${AppStrings.currency}',
+        'category': AppStrings.mode,
         'discount': '-10%',
         'location': 'Dakar',
         'image': 'assets/images/Robelongue.png',
@@ -111,8 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         'title': 'Casque Bluetooth',
         'price': '25,000',
-        'oldPrice': '35,000 FCFA',
-        'category': 'Tech',
+        'oldPrice': '35,000 ${AppStrings.currency}',
+        'category': AppStrings.tech,
         'discount': '-28%',
         'location': 'Abidjan',
         'image': 'assets/images/Headphones.png',
@@ -120,8 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         'title': 'Cosmétique Bio',
         'price': '8,500',
-        'oldPrice': '12,000 FCFA',
-        'category': 'Beauté',
+        'oldPrice': '12,000 ${AppStrings.currency}',
+        'category': AppStrings.beauty,
         'discount': '-30%',
         'location': 'Lomé',
         'image': 'assets/images/Cosmétique.png',
@@ -218,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CustomTextField(
               label: '',
               showLabel: false,
-              hint: "Que recherchez-vous ?",
+              hint: AppStrings.searchHint,
               borderRadius: 25.r,
               prefixIcon: const Icon(Icons.search, color: Colors.black38),
             ),
@@ -353,20 +358,20 @@ class _HomeScreenState extends State<HomeScreen> {
               RichText(
                 text: TextSpan(
                   children: [
-                    TextSpan(
-                      text: "Jusqu'à ",
+                    const TextSpan(
+                      text: AppStrings.discountUpTo,
                       style: TextStyle(
-                        fontSize: 28.sp,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: "-50%",
                       style: TextStyle(
-                        fontSize: 28.sp,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFFFFCC00),
+                        color: Color(0xFFFFCC00),
                       ),
                     ),
                   ],
@@ -374,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 5.h),
               Text(
-                "Sur toute la collection été",
+                AppStrings.summerCollection,
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: Colors.white.withOpacity(0.9),
@@ -394,18 +399,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     vertical: 10.h,
                   ),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "VOIR PLUS",
+                      AppStrings.seeMore,
                       style: TextStyle(
-                        fontSize: 12.sp,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(width: 5.w),
-                    const Icon(Icons.arrow_forward_ios, size: 10),
+                    SizedBox(width: 5),
+                    Icon(Icons.arrow_forward_ios, size: 10),
                   ],
                 ),
               ),

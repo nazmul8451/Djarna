@@ -1,4 +1,5 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/core/constants/app_strings.dart';
 import 'package:djarna/core/routes/app_routes.dart';
 import 'package:djarna/presentation/common_widgets/custom_button.dart';
 import 'package:djarna/presentation/common_widgets/custom_text_field.dart';
@@ -28,7 +29,7 @@ class SignInScreen extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               const Text(
-                'Sign In',
+                AppStrings.login,
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -38,21 +39,21 @@ class SignInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Access your premium marketplace',
+                AppStrings.accessMarketplace,
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 40),
               const CustomTextField(
-                label: 'Phone Number',
-                hint: 'Enter your email',
-                keyboardType: TextInputType.emailAddress,
+                label: AppStrings.phoneNumber,
+                hint: AppStrings.enterPhoneNumber,
+                keyboardType: TextInputType.phone,
               ),
               const SizedBox(height: 20),
               Stack(
                 children: [
                   const CustomTextField(
-                    label: 'Password',
-                    hint: 'Enter your password',
+                    label: AppStrings.password,
+                    hint: AppStrings.enterPassword,
                     isPassword: true,
                     suffixIcon: Icon(
                       Icons.visibility_outlined,
@@ -71,7 +72,7 @@ class SignInScreen extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       child: Text(
-                        'Forgot?',
+                        AppStrings.forgotPassword,
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -84,8 +85,9 @@ class SignInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               CustomButton(
-                text: 'Sign in',
-                onPressed: ()=> Navigator.pushNamed(context, AppRoutes.custom_bottom_bar),
+                text: AppStrings.login,
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.custom_bottom_bar),
                 fontSize: 18,
                 height: 56,
               ),
@@ -93,10 +95,10 @@ class SignInScreen extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(child: Divider(color: Colors.black12)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'OR SIGN IN WITH',
+                      AppStrings.orSignInWith,
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -128,7 +130,7 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Don\'t have an account? ',
+                    AppStrings.dontHaveAccount,
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   GestureDetector(
@@ -139,7 +141,7 @@ class SignInScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Create account',
+                      AppStrings.createAccount,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

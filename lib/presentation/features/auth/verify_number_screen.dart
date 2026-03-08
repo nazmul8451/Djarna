@@ -1,4 +1,5 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/core/constants/app_strings.dart';
 import 'package:djarna/presentation/common_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,7 +50,7 @@ class _VerifyNumberScreenState extends State<VerifyNumberScreen> {
               ),
               SizedBox(height: 8.h),
               const Text(
-                'Verify your number',
+                AppStrings.verifyNumber,
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -59,7 +60,7 @@ class _VerifyNumberScreenState extends State<VerifyNumberScreen> {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Enter the 6-digit code sent to',
+                AppStrings.enterCodeSent,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
@@ -78,24 +79,20 @@ class _VerifyNumberScreenState extends State<VerifyNumberScreen> {
                 children: List.generate(6, (index) => _buildOtpBox(index)),
               ),
               const SizedBox(height: 24),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.access_time,
-                    size: 16,
-                    color: Colors.black45,
-                  ),
-                  const SizedBox(width: 4),
-                  const Text(
-                    'Code expires in 02:00',
+                  Icon(Icons.access_time, size: 16, color: Colors.black45),
+                  SizedBox(width: 4),
+                  Text(
+                    '${AppStrings.codeExpiresIn} 02:00',
                     style: TextStyle(fontSize: 12, color: Colors.black45),
                   ),
                 ],
               ),
               const SizedBox(height: 32),
               CustomButton(
-                text: 'Verify & continue',
+                text: AppStrings.verifyAndContinue,
                 onPressed: () {
                   String otp = _otpControllers.map((c) => c.text).join();
                   debugPrint("Verifying with: $otp");
@@ -108,11 +105,11 @@ class _VerifyNumberScreenState extends State<VerifyNumberScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Didn\'t receive it? ',
+                    AppStrings.didntReceiveIt,
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   Text(
-                    'Resend in 30s',
+                    '${AppStrings.resendIn} 30s',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -126,8 +123,8 @@ class _VerifyNumberScreenState extends State<VerifyNumberScreen> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Text(
-                  'Change phone number',
+                child: const Text(
+                  AppStrings.changePhoneNumber,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,

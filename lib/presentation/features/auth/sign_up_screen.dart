@@ -1,4 +1,5 @@
 import 'package:djarna/core/constants/app_colors.dart';
+import 'package:djarna/core/constants/app_strings.dart';
 import 'package:djarna/core/routes/app_routes.dart';
 import 'package:djarna/presentation/common_widgets/custom_button.dart';
 import 'package:djarna/presentation/common_widgets/custom_text_field.dart';
@@ -28,7 +29,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               const Text(
-                'Sign Up',
+                AppStrings.signUp,
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -38,26 +39,26 @@ class SignUpScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Access your premium marketplace',
+                AppStrings.accessMarketplace,
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 40),
               const CustomTextField(
-                label: 'Phone number',
-                hint: 'Enter your phone number',
+                label: AppStrings.phoneNumber,
+                hint: AppStrings.enterPhoneNumber,
                 keyboardType: TextInputType.phone,
               ),
               const SizedBox(height: 8),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'We\'ll send a 6-digit verification code.',
+                  AppStrings.sendCodeDescription,
                   style: TextStyle(fontSize: 12, color: Colors.black45),
                 ),
               ),
               const SizedBox(height: 32),
               CustomButton(
-                text: 'Send code',
+                text: AppStrings.sendCode,
                 onPressed: () {
                   Navigator.pushNamed(context, AppRoutes.verify_number);
                 },
@@ -68,10 +69,10 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(child: Divider(color: Colors.black12)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'OR SIGN IN WITH',
+                      AppStrings.orSignInWith,
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class SignUpScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Already have an account? ',
+                    AppStrings.alreadyHaveAccount,
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   GestureDetector(
@@ -114,7 +115,7 @@ class SignUpScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Login',
+                      AppStrings.login,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
