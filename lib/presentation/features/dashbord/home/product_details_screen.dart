@@ -267,51 +267,39 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: Colors.black.withOpacity(0.05)),
+        color: const Color(0xFFFFF9F2),
+        borderRadius: BorderRadius.circular(24.r),
+        border: Border.all(color: const Color(0xFFFFE5D1)),
       ),
       child: Column(
         children: [
           Row(
             children: [
+              // Profile Stack
               Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  CircleAvatar(
-                    radius: 25.r,
-                    backgroundImage: const AssetImage(
-                      'assets/images/profile_image.png',
-                    ),
-                    backgroundColor: AppColors.chipGrey,
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Container(
-                      width: 18.w,
-                      height: 18.w,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF0066FF), // Blue badge from design
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "M",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                  Container(
+                    width: 64.w,
+                    height: 64.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.chipGrey,
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/profile_image.png'),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
+            
                 ],
               ),
               SizedBox(width: 12.w),
+              // Name and Stars
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -319,38 +307,40 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         Flexible(
                           child: Text(
                             "pavona1977",
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w900,
+                              color: const Color(0xFF1E293B),
                             ),
                           ),
                         ),
-                        SizedBox(width: 6.w),
+                        SizedBox(width: 8.w),
                         Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 6.w,
-                            vertical: 2.h,
+                            horizontal: 8.w,
+                            vertical: 4.h,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFF7ED),
-                            borderRadius: BorderRadius.circular(4.r),
+                            color: const Color(0xFFFFE5D1),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(
                                 Icons.verified,
-                                size: 12.sp,
-                                color: AppColors.buttonPrimary,
+                                size: 14.sp,
+                                color: const Color(0xFFE67E22),
                               ),
-                              SizedBox(width: 2.w),
+                              SizedBox(width: 4.w),
                               Text(
                                 "VERIFIED",
                                 style: TextStyle(
                                   fontSize: 8.sp,
-                                  color: AppColors.buttonPrimary,
-                                  fontWeight: FontWeight.bold,
+                                  color: const Color(0xFFE67E22),
+                                  fontWeight: FontWeight.w900,
                                 ),
                               ),
                             ],
@@ -358,50 +348,57 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ],
                     ),
+                    SizedBox(height: 2.h),
                     Row(
                       children: List.generate(
                         5,
                         (index) => Icon(
                           Icons.star_border,
-                          size: 14.sp,
-                          color: AppColors.buttonPrimary,
+                          size: 16.sp,
+                          color: const Color(0xFFE67E22),
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: 8.w), // Safety gap
+              // Ask Seller Button
+              SizedBox(width: 8.w),
               OutlinedButton(
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: AppColors.buttonPrimary),
+                  side: const BorderSide(color: Color(0xFFE67E22), width: 1.2),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.r),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 14.w),
-                  minimumSize: Size(80.w, 36.h),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  minimumSize: Size(0, 32.h),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
                   "Ask Seller",
                   style: TextStyle(
-                    fontSize: 11.sp,
-                    color: AppColors.buttonPrimary,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 7.sp,
+                    color: const Color(0xFFE67E22),
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
             ],
           ),
-          Divider(height: 32.h, color: Colors.black.withOpacity(0.05)),
+          Divider(
+            height: 32.h,
+            color: const Color(0xFFFFE5D1).withOpacity(0.5),
+            thickness: 1,
+          ),
           Row(
             children: [
               Icon(
                 Icons.verified_user_outlined,
-                size: 18.sp,
-                color: AppColors.buttonPrimary,
+                size: 20.sp,
+                color: const Color(0xFFE67E22),
               ),
-              SizedBox(width: 8.w),
+              SizedBox(width: 12.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -409,14 +406,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     Text(
                       "VERIFIED MEMBER",
                       style: TextStyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w900,
                         color: const Color(0xFF1E293B),
+                        letterSpacing: 0.5,
                       ),
                     ),
                     Text(
                       "This seller has successfully completed identity verification.",
-                      style: TextStyle(fontSize: 10.sp, color: Colors.black45),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: const Color(0xFF64748B),
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ],
                 ),
