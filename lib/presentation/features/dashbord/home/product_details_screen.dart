@@ -1,5 +1,6 @@
 import 'package:djarna/core/constants/app_colors.dart';
 import 'package:djarna/core/constants/app_strings.dart';
+import 'package:djarna/core/routes/app_routes.dart';
 import 'package:djarna/presentation/features/dashbord/home/widgets/detail_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,55 +21,57 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
-      body: Stack(
-        children: [
-          // Main Content
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildImageSection(),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                    vertical: 20.h,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            // Main Content
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildImageSection(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.w,
+                      vertical: 20.h,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildProductHeader(),
+                        Divider(
+                          height: 32.h,
+                          color: Colors.black.withOpacity(0.05),
+                        ),
+                        _buildDescriptionSection(),
+                        Divider(
+                          height: 32.h,
+                          color: Colors.black.withOpacity(0.05),
+                        ),
+                        _buildAttributesSection(),
+                        SizedBox(height: 24.h),
+                        _buildSellerSection(),
+                        SizedBox(height: 24.h),
+                        _buildBuyerProtectionBanner(),
+                        SizedBox(height: 24.h),
+                        _buildPostageSection(),
+                        SizedBox(height: 32.h),
+                        _buildRelatedItemsSection(),
+                        SizedBox(height: 120.h), // Space for sticky bottom bar
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildProductHeader(),
-                      Divider(
-                        height: 32.h,
-                        color: Colors.black.withOpacity(0.05),
-                      ),
-                      _buildDescriptionSection(),
-                      Divider(
-                        height: 32.h,
-                        color: Colors.black.withOpacity(0.05),
-                      ),
-                      _buildAttributesSection(),
-                      SizedBox(height: 24.h),
-                      _buildSellerSection(),
-                      SizedBox(height: 24.h),
-                      _buildBuyerProtectionBanner(),
-                      SizedBox(height: 24.h),
-                      _buildPostageSection(),
-                      SizedBox(height: 32.h),
-                      _buildRelatedItemsSection(),
-                      SizedBox(height: 120.h), // Space for sticky bottom bar
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          // Overlay Buttons
-          _buildOverlayButtons(context),
+            // Overlay Buttons (Already has SafeArea)
+            _buildOverlayButtons(context),
 
-          // Sticky Bottom Bar
-          _buildBottomBar(),
-        ],
+            // Sticky Bottom Bar
+            _buildBottomBar(),
+          ],
+        ),
       ),
     );
   }
@@ -291,7 +294,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                   ),
-            
                 ],
               ),
               SizedBox(width: 12.w),
@@ -621,7 +623,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SizedBox(width: 15.w),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.checkOut);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFB58322),
                     padding: EdgeInsets.symmetric(vertical: 16.h),
