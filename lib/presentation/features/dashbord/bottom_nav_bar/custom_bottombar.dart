@@ -36,11 +36,12 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundLight,
       body: IndexedStack(index: _selectedIndex, children: _screens),
       bottomNavigationBar: Container(
         height: 80.h,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.backgroundLight,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
