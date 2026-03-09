@@ -12,12 +12,19 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
-      body: Column(
-        children: [
-          _buildAppBar()
-        ],
-
-        
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                _buildAppBar()
+              ],
+            
+              
+            ),
+          ),
+        ),
       ),
     );
   }
