@@ -1,5 +1,6 @@
 import 'package:djarna/core/constants/app_colors.dart';
 import 'package:djarna/core/constants/app_strings.dart';
+import 'package:djarna/core/routes/app_routes.dart';
 import 'package:djarna/presentation/common_widgets/custom_text_field.dart';
 import 'package:djarna/presentation/common_widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Mock category data (this would come from an API later)
   final List<Map<String, dynamic>> _categories = [
-    {'name': AppStrings.all, 'count': '42', 'icon': Icons.grid_view_rounded},
-    {'name': AppStrings.clothing, 'count': '42', 'icon': Icons.person_outline},
+    {'name': AppStrings.all, 'count': '87', 'icon': Icons.grid_view_rounded},
+    {'name': AppStrings.clothing, 'count': '147', 'icon': Icons.person_outline},
     {
       'name': AppStrings.electronics,
-      'count': '12',
+      'count': '321',
       'icon': Icons.person_outline,
     },
   ];
@@ -153,6 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
           discount: product['discount'] as String,
           location: product['location'] as String,
           imageUrl: product['image'] as String,
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.product_details);
+          },
         );
       },
     );
@@ -224,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
               label: '',
               showLabel: false,
               hint: AppStrings.searchHint,
-              borderRadius: 25.r,
+              borderRadius: 15.r,
               prefixIcon: const Icon(Icons.search, color: Colors.black38),
             ),
           ),
