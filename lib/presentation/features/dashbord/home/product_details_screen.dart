@@ -367,7 +367,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               // Ask Seller Button
               SizedBox(width: 8.w),
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.chat_details);
+                },
                 style: OutlinedButton.styleFrom(
                   side: const BorderSide(color: Color(0xFFE67E22), width: 1.2),
                   shape: RoundedRectangleBorder(
@@ -602,7 +604,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.make_offer);
+                  },
                   style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16.h),
                     side: const BorderSide(color: Color(0xFFB58322)),

@@ -3,8 +3,10 @@ import 'package:djarna/presentation/features/auth/sign_up_screen.dart';
 import 'package:djarna/presentation/features/auth/verify_number_screen.dart';
 import 'package:djarna/presentation/features/dashbord/bottom_nav_bar/custom_bottombar.dart';
 import 'package:djarna/presentation/features/dashbord/home/checkout_screen.dart';
+import 'package:djarna/presentation/features/dashbord/home/make_offer_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/payment_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/product_details_screen.dart';
+import 'package:djarna/presentation/features/dashbord/message/chat_details_screen.dart';
 import 'package:djarna/presentation/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +20,8 @@ class AppRoutes {
   static const String product_details = ProductDetailsScreen.name;
   static const String checkOut = CheckoutScreen.name;
   static const String payment = PaymentScreen.name;
+  static const String chat_details = ChatDetailsScreen.name;
+  static const String make_offer = MakeAnOfferScreen.name;
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -28,5 +32,8 @@ class AppRoutes {
     product_details: (context) => const ProductDetailsScreen(),
     checkOut: (context) => const CheckoutScreen(),
     payment: (context) => const PaymentScreen(),
+    //chat details screen and make offer screen spacial case
+    chat_details: (context) => const ChatDetailsScreen(),
+    make_offer: (context) => const MakeAnOfferScreen(),
   };
 }
