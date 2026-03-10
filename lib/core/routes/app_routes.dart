@@ -11,6 +11,8 @@ import 'package:djarna/presentation/features/dashbord/home/seller_profile_screen
 import 'package:djarna/presentation/features/dashbord/home/search_filter_screen.dart';
 import 'package:djarna/presentation/features/dashbord/profile/my_listings_screen.dart';
 import 'package:djarna/presentation/features/dashbord/profile/edit_listing_screen.dart';
+import 'package:djarna/presentation/features/dashbord/home/fashion_category_screen.dart';
+import 'package:djarna/presentation/features/dashbord/home/sub_category_screen.dart';
 import 'package:djarna/presentation/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +32,8 @@ class AppRoutes {
   static const String my_listings = MyListingsScreen.name;
   static const String search_filter = SearchFilterScreen.name;
   static const String edit_listing = EditListingScreen.name;
+  static const String fashion_category = FashionCategoryScreen.name;
+  static const String sub_category = SubCategoryScreen.name;
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -47,5 +51,10 @@ class AppRoutes {
     my_listings: (context) => const MyListingsScreen(),
     search_filter: (context) => const SearchFilterScreen(),
     edit_listing: (context) => const EditListingScreen(),
+    fashion_category: (context) => const FashionCategoryScreen(),
+    sub_category: (context) {
+      final args = ModalRoute.of(context)!.settings.arguments as String;
+      return SubCategoryScreen(title: args);
+    },
   };
 }

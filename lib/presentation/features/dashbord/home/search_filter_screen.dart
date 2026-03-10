@@ -216,42 +216,67 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
       ),
       itemBuilder: (context, index) {
         final category = _categories[index];
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.03),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Stack(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(16.w),
-                child: Text(
-                  category['name']!,
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFF1E293B),
+        return GestureDetector(
+          onTap: () {
+            if (category['name'] == 'FASHION') {
+              Navigator.pushNamed(context, '/fashion-category');
+            } else if (category['name'] == 'BEAUTY') {
+              Navigator.pushNamed(
+                context,
+                '/sub-category',
+                arguments: 'BEAUTY',
+              );
+            } else if (category['name'] == 'KIDS & BABY') {
+              Navigator.pushNamed(
+                context,
+                '/sub-category',
+                arguments: 'Kids & Baby',
+              );
+            } else if (category['name'] == 'HOME & DECOR') {
+              Navigator.pushNamed(
+                context,
+                '/sub-category',
+                arguments: 'HOME & DECORE',
+              );
+            }
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.03),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16.w),
+                  child: Text(
+                    category['name']!,
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF1E293B),
+                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 8.h,
-                right: 8.w,
-                child: Image.asset(
-                  category['image']!,
-                  width: 70.w,
-                  height: 70.h,
-                  fit: BoxFit.contain,
+                Positioned(
+                  bottom: 8.h,
+                  right: 8.w,
+                  child: Image.asset(
+                    category['image']!,
+                    width: 70.w,
+                    height: 70.h,
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
