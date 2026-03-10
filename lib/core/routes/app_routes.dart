@@ -7,6 +7,7 @@ import 'package:djarna/presentation/features/dashbord/home/make_offer_screen.dar
 import 'package:djarna/presentation/features/dashbord/home/payment_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/product_details_screen.dart';
 import 'package:djarna/presentation/features/dashbord/message/chat_details_screen.dart';
+import 'package:djarna/presentation/features/dashbord/home/seller_profile_screen.dart';
 import 'package:djarna/presentation/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class AppRoutes {
   static const String payment = PaymentScreen.name;
   static const String chat_details = ChatDetailsScreen.name;
   static const String make_offer = MakeAnOfferScreen.name;
+  static const String seller_profile = SellerProfileScreen.name;
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -35,5 +37,6 @@ class AppRoutes {
     //chat details screen and make offer screen spacial case
     chat_details: (context) => const ChatDetailsScreen(),
     make_offer: (context) => const MakeAnOfferScreen(),
+    seller_profile: (context) => const SellerProfileScreen(),
   };
 }

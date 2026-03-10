@@ -278,90 +278,98 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         children: [
           Row(
             children: [
-              // Profile Stack
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    width: 64.w,
-                    height: 64.w,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.chipGrey,
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/profile_image.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(width: 12.w),
-              // Name and Stars
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+              // Profile Stack — tappable
+              GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.seller_profile),
+                child: Stack(
+                  clipBehavior: Clip.none,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "pavona1977",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w900,
-                              color: const Color(0xFF1E293B),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 8.w),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 4.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFFFE5D1),
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.verified,
-                                size: 14.sp,
-                                color: const Color(0xFFE67E22),
-                              ),
-                              SizedBox(width: 4.w),
-                              Text(
-                                "VERIFIED",
-                                style: TextStyle(
-                                  fontSize: 8.sp,
-                                  color: const Color(0xFFE67E22),
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 2.h),
-                    Row(
-                      children: List.generate(
-                        5,
-                        (index) => Icon(
-                          Icons.star_border,
-                          size: 16.sp,
-                          color: const Color(0xFFE67E22),
+                    Container(
+                      width: 64.w,
+                      height: 64.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.chipGrey,
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/seller_img.png'),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ],
+                ),
+              ),
+              SizedBox(width: 12.w),
+              // Name and Stars — tappable
+              Expanded(
+                child: GestureDetector(
+                  onTap: () =>
+                      Navigator.pushNamed(context, AppRoutes.seller_profile),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              "pavona1977",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w900,
+                                color: const Color(0xFF1E293B),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 4.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFFE5D1),
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.verified,
+                                  size: 14.sp,
+                                  color: const Color(0xFFE67E22),
+                                ),
+                                SizedBox(width: 4.w),
+                                Text(
+                                  "VERIFIED",
+                                  style: TextStyle(
+                                    fontSize: 8.sp,
+                                    color: const Color(0xFFE67E22),
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 2.h),
+                      Row(
+                        children: List.generate(
+                          5,
+                          (index) => Icon(
+                            Icons.star_border,
+                            size: 16.sp,
+                            color: const Color(0xFFE67E22),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               // Ask Seller Button
