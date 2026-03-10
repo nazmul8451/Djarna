@@ -51,7 +51,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               _buildSectionTitle('GENERAL'),
               SizedBox(height: 8.h),
               _buildSectionCard([
-                _buildListItem(Icons.favorite_border, 'Favorite Item'),
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/favourite-item'),
+                  child: _buildListItem(Icons.favorite_border, 'Favorite Item'),
+                ),
                 _buildListItem(Icons.person_add_alt, 'Invite friends'),
                 _buildListItem(Icons.wallet_outlined, 'Balance'),
                 _buildListItem(Icons.shopping_bag_outlined, 'My Orders'),
