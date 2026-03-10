@@ -234,22 +234,27 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SizedBox(width: 15.w),
-        Container(
-          height: 52.h,
-          width: 52.h,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 15,
-                offset: const Offset(0, 8),
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(context, '/search-filter'),
+          child: Container(
+            height: 52.h,
+            width: 52.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 15,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+              border: Border.all(
+                color: AppColors.buttonPrimary.withOpacity(0.1),
               ),
-            ],
-            border: Border.all(color: AppColors.buttonPrimary.withOpacity(0.1)),
+            ),
+            child: const Icon(Icons.tune, color: Colors.black54),
           ),
-          child: const Icon(Icons.tune, color: Colors.black54),
         ),
       ],
     );
