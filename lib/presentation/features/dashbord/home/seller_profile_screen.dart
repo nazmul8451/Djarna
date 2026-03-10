@@ -30,6 +30,17 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
     'assets/images/Cosmétique.png',
   ];
   final List<String> _listings = List.generate(8, (i) => 'item_$i');
+  final Set<int> _favoritedItems = {};
+
+  void _toggleFavorite(int index) {
+    setState(() {
+      if (_favoritedItems.contains(index)) {
+        _favoritedItems.remove(index);
+      } else {
+        _favoritedItems.add(index);
+      }
+    });
+  }
 
   // Dummy reviews
   final _reviews = [
@@ -483,17 +494,24 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
           Positioned(
             bottom: 8.h,
             right: 8.w,
-            child: Container(
-              width: 28.w,
-              height: 28.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.2),
-              ),
-              child: Icon(
-                Icons.favorite_border,
-                size: 14.sp,
-                color: Colors.white,
+            child: GestureDetector(
+              onTap: () => _toggleFavorite(i),
+              child: Container(
+                width: 28.w,
+                height: 28.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: _favoritedItems.contains(i)
+                      ? Colors.red.withValues(alpha: 0.7)
+                      : Colors.white.withValues(alpha: 0.2),
+                ),
+                child: Icon(
+                  _favoritedItems.contains(i)
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  size: 14.sp,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
