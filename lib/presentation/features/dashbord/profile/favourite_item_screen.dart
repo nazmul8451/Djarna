@@ -78,7 +78,7 @@ class _FavouriteItemScreenState extends State<FavouriteItemScreen> {
     return GestureDetector(
       onTap: () => setState(() => _selectedFilter = label),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 5.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20.r),

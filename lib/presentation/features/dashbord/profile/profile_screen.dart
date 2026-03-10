@@ -55,11 +55,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onTap: () => Navigator.pushNamed(context, '/favourite-item'),
                   child: _buildListItem(Icons.favorite_border, 'Favorite Item'),
                 ),
-                _buildListItem(Icons.person_add_alt, 'Invite friends'),
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/invite-friends'),
+                  child: _buildListItem(Icons.person_add_alt, 'Invite friends'),
+                ),
                 _buildListItem(Icons.wallet_outlined, 'Balance'),
                 _buildListItem(Icons.shopping_bag_outlined, 'My Orders'),
                 _buildListItem(Icons.campaign_outlined, 'Promotional tools'),
-                _buildListItem(Icons.tune_outlined, 'Personalization'),
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/personalization'),
+                  child: _buildListItem(Icons.tune_outlined, 'Personalization'),
+                ),
               ]),
               SizedBox(height: 24.h),
               _buildSectionCard([
@@ -67,9 +73,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ]),
               SizedBox(height: 24.h),
               _buildSectionCard([
-                _buildListItem(
-                  Icons.menu_book_outlined,
-                  'Your guide to DJARNA',
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/djarna-guide'),
+                  child: _buildListItem(
+                    Icons.menu_book_outlined,
+                    'Your guide to DJARNA',
+                  ),
                 ),
                 _buildListItem(Icons.help_outline, 'Help center'),
                 _buildListItem(Icons.settings_outlined, 'Settings'),

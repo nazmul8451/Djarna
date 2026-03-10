@@ -12,6 +12,9 @@ import 'package:djarna/presentation/features/dashbord/home/search_filter_screen.
 import 'package:djarna/presentation/features/dashbord/profile/my_listings_screen.dart';
 import 'package:djarna/presentation/features/dashbord/profile/edit_listing_screen.dart';
 import 'package:djarna/presentation/features/dashbord/profile/favourite_item_screen.dart';
+import 'package:djarna/presentation/features/dashbord/profile/invite_friends_screen.dart';
+import 'package:djarna/presentation/features/dashbord/profile/personalization_screen.dart';
+import 'package:djarna/presentation/features/dashbord/profile/djarna_guide_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/fashion_category_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/sub_category_screen.dart';
 import 'package:djarna/presentation/features/splash/splash_screen.dart';
@@ -34,6 +37,9 @@ class AppRoutes {
   static const String search_filter = SearchFilterScreen.name;
   static const String edit_listing = EditListingScreen.name;
   static const String favourite_item = FavouriteItemScreen.name;
+  static const String invite_friends = InviteFriendsScreen.name;
+  static const String personalization = PersonalizationScreen.name;
+  static const String djarna_guide = DjarnaGuideScreen.name;
   static const String fashion_category = FashionCategoryScreen.name;
   static const String sub_category = SubCategoryScreen.name;
 
@@ -54,6 +60,9 @@ class AppRoutes {
     search_filter: (context) => const SearchFilterScreen(),
     edit_listing: (context) => const EditListingScreen(),
     favourite_item: (context) => const FavouriteItemScreen(),
+    invite_friends: (context) => const InviteFriendsScreen(),
+    personalization: (context) => const PersonalizationScreen(),
+    djarna_guide: (context) => const DjarnaGuideScreen(),
     fashion_category: (context) => const FashionCategoryScreen(),
     sub_category: (context) {
       final args = ModalRoute.of(context)!.settings.arguments as String;
