@@ -263,46 +263,57 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'DJARNA',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.black87,
+                    InkWell(
+                      onTap: () {}, // Future: Go to DJARNA info
+                      child: Row(
+                        children: [
+                          Text(
+                            'DJARNA',
+                            style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 6.w),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 14.sp,
-                          color: Colors.black45,
-                        ),
-                      ],
+                          SizedBox(width: 6.w),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 14.sp,
+                            color: Colors.black45,
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 2.h),
-                    Row(
-                      children: [
-                        ...List.generate(
-                          4,
-                          (_) => Icon(
-                            Icons.star,
+                    InkWell(
+                      onTap: () =>
+                          _tabController.animateTo(1), // Switch to Reviews tab
+                      child: Row(
+                        children: [
+                          ...List.generate(
+                            4,
+                            (_) => Icon(
+                              Icons.star,
+                              size: 13.sp,
+                              color: _orangeColor,
+                            ),
+                          ),
+                          Icon(
+                            Icons.star_half,
                             size: 13.sp,
                             color: _orangeColor,
                           ),
-                        ),
-                        Icon(Icons.star_half, size: 13.sp, color: _orangeColor),
-                        SizedBox(width: 4.w),
-                        Text(
-                          '402 reviews',
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: _goldColor,
-                            fontWeight: FontWeight.w500,
+                          SizedBox(width: 4.w),
+                          Text(
+                            '402 reviews',
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              color: _goldColor,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(height: 6.h),
                     // FREQUENT UPLOADER badge
@@ -342,30 +353,36 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
           ),
           SizedBox(height: 10.h),
           // Social / location
-          Row(
-            children: [
-              Icon(Icons.verified_outlined, size: 15.sp, color: _goldColor),
-              SizedBox(width: 6.w),
-              Text(
-                'Facebook, Email',
-                style: TextStyle(fontSize: 13.sp, color: Colors.black54),
-              ),
-            ],
+          InkWell(
+            onTap: () {},
+            child: Row(
+              children: [
+                Icon(Icons.verified_outlined, size: 15.sp, color: _goldColor),
+                SizedBox(width: 6.w),
+                Text(
+                  'Facebook, Email',
+                  style: TextStyle(fontSize: 13.sp, color: Colors.black54),
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 6.h),
-          Row(
-            children: [
-              Icon(
-                Icons.location_on_outlined,
-                size: 15.sp,
-                color: Colors.black45,
-              ),
-              SizedBox(width: 6.w),
-              Text(
-                'Italy',
-                style: TextStyle(fontSize: 13.sp, color: Colors.black54),
-              ),
-            ],
+          InkWell(
+            onTap: () {},
+            child: Row(
+              children: [
+                Icon(
+                  Icons.location_on_outlined,
+                  size: 15.sp,
+                  color: Colors.black45,
+                ),
+                SizedBox(width: 6.w),
+                Text(
+                  'Italy',
+                  style: TextStyle(fontSize: 13.sp, color: Colors.black54),
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 6.h),
           Row(
@@ -480,65 +497,69 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
   }
 
   Widget _buildProductCard(int i) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.r),
-        image: DecorationImage(
-          image: AssetImage(_productImages[i % _productImages.length]),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Stack(
-        children: [
-          // No more center number text
-          Positioned(
-            bottom: 8.h,
-            right: 8.w,
-            child: GestureDetector(
-              onTap: () => _toggleFavorite(i),
-              child: Container(
-                width: 28.w,
-                height: 28.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _favoritedItems.contains(i)
-                      ? Colors.red.withValues(alpha: 0.7)
-                      : Colors.white.withValues(alpha: 0.2),
-                ),
-                child: Icon(
-                  _favoritedItems.contains(i)
-                      ? Icons.favorite
-                      : Icons.favorite_border,
-                  size: 14.sp,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+    return InkWell(
+      onTap: () {}, // Future: Go to product details
+      borderRadius: BorderRadius.circular(12.r),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          image: DecorationImage(
+            image: AssetImage(_productImages[i % _productImages.length]),
+            fit: BoxFit.cover,
           ),
-          if (i == 1)
+        ),
+        child: Stack(
+          children: [
+            // No more center number text
             Positioned(
               bottom: 8.h,
-              right: 34.w,
-              child: Container(
-                width: 20.w,
-                height: 20.w,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey,
-                ),
-                child: Center(
-                  child: Text(
-                    '4',
-                    style: TextStyle(
-                      fontSize: 10.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+              right: 8.w,
+              child: GestureDetector(
+                onTap: () => _toggleFavorite(i),
+                child: Container(
+                  width: 28.w,
+                  height: 28.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _favoritedItems.contains(i)
+                        ? Colors.red.withValues(alpha: 0.7)
+                        : Colors.white.withValues(alpha: 0.2),
+                  ),
+                  child: Icon(
+                    _favoritedItems.contains(i)
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                    size: 14.sp,
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
-        ],
+            if (i == 1)
+              Positioned(
+                bottom: 8.h,
+                right: 34.w,
+                child: Container(
+                  width: 20.w,
+                  height: 20.w,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '4',
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -646,28 +667,31 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
   }
 
   Widget _reviewStatRow(String label, String score) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: TextStyle(fontSize: 14.sp, color: Colors.black87),
-        ),
-        Row(
-          children: [
-            Text(
-              score,
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+    return InkWell(
+      onTap: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(fontSize: 14.sp, color: Colors.black87),
+          ),
+          Row(
+            children: [
+              Text(
+                score,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
-            ),
-            SizedBox(width: 4.w),
-            Icon(Icons.star, size: 14.sp, color: _orangeColor),
-          ],
-        ),
-      ],
+              SizedBox(width: 4.w),
+              Icon(Icons.star, size: 14.sp, color: _orangeColor),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -697,72 +721,21 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
 
   Widget _buildReviewItem(Map<dynamic, dynamic> r) {
     final rating = r['rating'] as int;
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 38.w,
-                height: 38.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/seller_img.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      r['user'] as String,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    Row(
-                      children: List.generate(
-                        5,
-                        (i) => Icon(
-                          i < rating ? Icons.star : Icons.star_border,
-                          size: 13.sp,
-                          color: _orangeColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Text(
-                r['time'] as String,
-                style: TextStyle(fontSize: 12.sp, color: Colors.black38),
-              ),
-            ],
-          ),
-          SizedBox(height: 8.h),
-          Text(
-            r['comment'] as String,
-            style: TextStyle(fontSize: 14.sp, color: Colors.black87),
-          ),
-          if (r['seller_reply'] != null) ...[
-            SizedBox(height: 8.h),
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+        decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Row(
               children: [
                 Container(
-                  width: 28.w,
-                  height: 28.w,
+                  width: 38.w,
+                  height: 38.w,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey[300],
@@ -772,36 +745,90 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
                     ),
                   ),
                 ),
-                SizedBox(width: 8.w),
-                Text(
-                  r['seller_reply'] as String,
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
+                SizedBox(width: 10.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        r['user'] as String,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      Row(
+                        children: List.generate(
+                          5,
+                          (i) => Icon(
+                            i < rating ? Icons.star : Icons.star_border,
+                            size: 13.sp,
+                            color: _orangeColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+                Text(
+                  r['time'] as String,
+                  style: TextStyle(fontSize: 12.sp, color: Colors.black38),
                 ),
               ],
             ),
-          ],
-          if (r['translate'] == true) ...[
             SizedBox(height: 8.h),
-            Row(
-              children: [
-                Icon(Icons.translate, size: 14.sp, color: _goldColor),
-                SizedBox(width: 4.w),
-                Text(
-                  'Tap to translate',
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    color: _goldColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
+            Text(
+              r['comment'] as String,
+              style: TextStyle(fontSize: 14.sp, color: Colors.black87),
             ),
+            if (r['seller_reply'] != null) ...[
+              SizedBox(height: 8.h),
+              Row(
+                children: [
+                  Container(
+                    width: 28.w,
+                    height: 28.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey[300],
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/seller_img.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 8.w),
+                  Text(
+                    r['seller_reply'] as String,
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+            if (r['translate'] == true) ...[
+              SizedBox(height: 8.h),
+              Row(
+                children: [
+                  Icon(Icons.translate, size: 14.sp, color: _goldColor),
+                  SizedBox(width: 4.w),
+                  Text(
+                    'Tap to translate',
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      color: _goldColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }
@@ -842,47 +869,59 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
                   ),
                 ),
                 SizedBox(height: 14.h),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      size: 18.sp,
-                      color: _goldColor,
-                    ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      'Italy',
-                      style: TextStyle(fontSize: 15.sp, color: Colors.black87),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 18.sp,
+                        color: _goldColor,
+                      ),
+                      SizedBox(width: 8.w),
+                      Text(
+                        'Italy',
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 10.h),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.access_time_outlined,
-                      size: 18.sp,
-                      color: _goldColor,
-                    ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      'Last seen 3 hours ago',
-                      style: TextStyle(fontSize: 15.sp, color: Colors.black87),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.access_time_outlined,
+                        size: 18.sp,
+                        color: _goldColor,
+                      ),
+                      SizedBox(width: 8.w),
+                      Text(
+                        'Last seen 3 hours ago',
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 10.h),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.rss_feed_outlined,
-                      size: 18.sp,
-                      color: _goldColor,
-                    ),
-                    SizedBox(width: 8.w),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.rss_feed_outlined,
+                        size: 18.sp,
+                        color: _goldColor,
+                      ),
+                      SizedBox(width: 8.w),
+                      Text(
                         '32 followers',
                         style: TextStyle(
                           fontSize: 15.sp,
@@ -890,11 +929,8 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                    SizedBox(width: 12.w),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
+                      SizedBox(width: 12.w),
+                      Text(
                         '0 following',
                         style: TextStyle(
                           fontSize: 15.sp,
@@ -902,8 +938,8 @@ class _SellerProfileScreenState extends State<SellerProfileScreen>
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(height: 20.h),
                 SizedBox(

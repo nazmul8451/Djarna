@@ -8,6 +8,8 @@ import 'package:djarna/presentation/features/dashbord/home/payment_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/product_details_screen.dart';
 import 'package:djarna/presentation/features/dashbord/message/chat_details_screen.dart';
 import 'package:djarna/presentation/features/dashbord/home/seller_profile_screen.dart';
+import 'package:djarna/presentation/features/dashbord/profile/my_listings_screen.dart';
+import 'package:djarna/presentation/features/dashbord/profile/edit_listing_screen.dart';
 import 'package:djarna/presentation/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,8 @@ class AppRoutes {
   static const String chat_details = ChatDetailsScreen.name;
   static const String make_offer = MakeAnOfferScreen.name;
   static const String seller_profile = SellerProfileScreen.name;
+  static const String my_listings = MyListingsScreen.name;
+  static const String edit_listing = EditListingScreen.name;
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -38,5 +42,7 @@ class AppRoutes {
     chat_details: (context) => const ChatDetailsScreen(),
     make_offer: (context) => const MakeAnOfferScreen(),
     seller_profile: (context) => const SellerProfileScreen(),
+    my_listings: (context) => const MyListingsScreen(),
+    edit_listing: (context) => const EditListingScreen(),
   };
 }
