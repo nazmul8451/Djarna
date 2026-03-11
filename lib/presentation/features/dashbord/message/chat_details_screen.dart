@@ -158,6 +158,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.backgroundLight,
       elevation: 0,
+      leading: BackButton(),
       title: Column(
         children: [
           Text(
