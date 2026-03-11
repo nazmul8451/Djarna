@@ -155,12 +155,9 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
   // ── AppBar ──────────────────────────────────
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: AppColors.backgroundLight,
       elevation: 0,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios_new, size: 20.sp, color: Colors.black),
-        onPressed: () => Navigator.pop(context),
-      ),
       title: Column(
         children: [
           Text(

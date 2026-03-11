@@ -47,13 +47,10 @@ class _MessageScreenState extends State<MessageScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
-          onPressed: () => Navigator.maybePop(context),
-        ),
         title: Text(
           AppStrings.inbox,
           style: TextStyle(
@@ -62,33 +59,6 @@ class _MessageScreenState extends State<MessageScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          // For testing purposes: Toggle between empty and filled state
-          IconButton(
-            icon: Icon(
-              _mockMessages.isEmpty ? Icons.add_comment : Icons.delete_sweep,
-              color: AppColors.buttonPrimary,
-            ),
-            onPressed: () {
-              setState(() {
-                if (_mockMessages.isEmpty) {
-                  _mockMessages.addAll([
-                    {
-                      'name': 'New User',
-                      'message': 'Hello there!',
-                      'time': 'Now',
-                      'image': 'assets/images/profile_icon.png',
-                      'isOnline': 'true',
-                      'type': 'normal',
-                    },
-                  ]);
-                } else {
-                  _mockMessages.clear();
-                }
-              });
-            },
-          ),
-        ],
       ),
       body: Column(
         children: [
