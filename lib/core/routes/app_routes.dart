@@ -53,7 +53,11 @@ class AppRoutes {
     checkOut: (context) => const CheckoutScreen(),
     payment: (context) => const PaymentScreen(),
     //chat details screen and make offer screen spacial case
-    chat_details: (context) => const ChatDetailsScreen(),
+    chat_details: (context) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      final bool isTransactional = args is bool ? args : false;
+      return ChatDetailsScreen(isTransactional: isTransactional);
+    },
     make_offer: (context) => const MakeAnOfferScreen(),
     seller_profile: (context) => const SellerProfileScreen(),
     my_listings: (context) => const MyListingsScreen(),

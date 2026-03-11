@@ -376,7 +376,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SizedBox(width: 8.w),
               OutlinedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.chat_details);
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.chat_details,
+                    arguments: true,
+                  );
                 },
                 style: OutlinedButton.styleFrom(
                   side: const BorderSide(color: Color(0xFFE67E22), width: 1.2),

@@ -45,4 +45,15 @@ class AppStrings {
   static const String mode = 'Mode';
   static const String tech = 'Tech';
   static const String beauty = 'Beauté';
+  
+  // Inbox Screen
+  static const String inbox = 'Boîte de réception';
+  static const String messages = 'Messages';
+  static const String notifications = 'Notifications';
+  static const String readyToStartConversation = 'Prêt à commencer une conversation ?';
+  static const String emptyMessageSubtitle =
+      'Vos messages avec les vendeurs et les acheteurs apparaîtront ici une fois que vous aurez commencé à discuter.';
+  static const String exploreListings = 'Explorer les annonces';
+  static const String online = 'En ligne';
+  static const String justNow = 'À l\'instant';
 }

@@ -1,21 +1,26 @@
+import 'dart:io';
+
 import 'package:djarna/core/constants/app_colors.dart';
 import 'package:djarna/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 // ──────────────────────────────────────────────
 // Simple message model
 // ──────────────────────────────────────────────
-enum _MsgType { text, offer }
+enum _MsgType { text, offer, image }
 
 class _ChatMessage {
-  final String text;
+  final String? text;
+  final String? imageUrl;
   final bool isMe;
   final DateTime time;
   final _MsgType type;
 
   _ChatMessage({
-    required this.text,
+    this.text,
+    this.imageUrl,
     required this.isMe,
     required this.time,
     this.type = _MsgType.text,
@@ -26,7 +31,8 @@ class _ChatMessage {
 // Screen
 // ──────────────────────────────────────────────
 class ChatDetailsScreen extends StatefulWidget {
-  const ChatDetailsScreen({super.key});
+  final bool isTransactional;
+  const ChatDetailsScreen({super.key, this.isTransactional = true});
 
   static const String name = "/chat-details";
 
@@ -37,31 +43,54 @@ class ChatDetailsScreen extends StatefulWidget {
 class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
   final TextEditingController _messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
+  final ImagePicker _picker = ImagePicker();
   bool _showSafetyTip = true;
 
   // Tracks which message index has its timestamp shown (only one at a time)
   final Set<int> _expandedTimestamps = {};
 
   // Pre-seeded conversation
-  final List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: "seller_intro",
-      isMe: false,
-      time: DateTime.now().subtract(const Duration(minutes: 60)),
-    ),
-    _ChatMessage(
-      text: "offer",
-      isMe: true,
-      time: DateTime.now().subtract(const Duration(minutes: 30)),
-      type: _MsgType.offer,
-    ),
-  ];
+  late final List<_ChatMessage> _messages;
+
+  @override
+  void initState() {
+    super.initState();
+    _messages = [
+      _ChatMessage(
+        text: "Hi, I'm liz6266",
+        isMe: false,
+        time: DateTime.now().subtract(const Duration(minutes: 60)),
+      ),
+      if (widget.isTransactional)
+        _ChatMessage(
+          text: "offer",
+          isMe: true,
+          time: DateTime.now().subtract(const Duration(minutes: 30)),
+          type: _MsgType.offer,
+        ),
+    ];
+  }
 
   @override
   void dispose() {
     _messageController.dispose();
     _scrollController.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickImage(ImageSource source) async {
+    final XFile? image = await _picker.pickImage(source: source);
+    if (image != null) {
+      setState(() {
+        _messages.add(_ChatMessage(
+          imageUrl: image.path,
+          isMe: true,
+          time: DateTime.now(),
+          type: _MsgType.image,
+        ));
+      });
+      _scrollToBottom();
+    }
   }
 
   void _sendMessage() {
@@ -71,6 +100,10 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       _messages.add(_ChatMessage(text: text, isMe: true, time: DateTime.now()));
       _messageController.clear();
     });
+    _scrollToBottom();
+  }
+
+  void _scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
@@ -107,8 +140,10 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       appBar: _buildAppBar(),
       body: Column(
         children: [
-          _buildProductSection(),
-          const Divider(height: 1, color: Color(0xFFEEEEEE)),
+          if (widget.isTransactional) ...[
+            _buildProductSection(),
+            const Divider(height: 1, color: Color(0xFFEEEEEE)),
+          ],
           Expanded(child: _buildChatMessages()),
           if (_showSafetyTip) _buildSafetyTip(),
           _buildMessageInput(),
@@ -309,16 +344,63 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       itemBuilder: (context, index) {
         if (index == _messages.length) return _buildTranslateRow();
         final msg = _messages[index];
-        if (!msg.isMe && msg.text == "seller_intro") {
-          return _buildSellerIntroMessage(msg, index);
+
+        if (msg.type == _MsgType.image) {
+          return _buildImageMessage(msg, index);
         }
-        if (msg.isMe && msg.type == _MsgType.offer) {
+
+        if (widget.isTransactional && msg.type == _MsgType.offer) {
           return _buildOfferMessage(msg, index);
         }
+
         return msg.isMe
             ? _buildMyTextMessage(msg, index)
             : _buildTheirTextMessage(msg, index);
       },
+    );
+  }
+
+  // ── Image bubble ─────────────────────────────
+  Widget _buildImageMessage(_ChatMessage msg, int index) {
+    return GestureDetector(
+      onTap: () => _toggleTimestamp(index),
+      child: Column(
+        crossAxisAlignment:
+            msg.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: [
+          Align(
+            alignment: msg.isMe ? Alignment.centerRight : Alignment.centerLeft,
+            child: Container(
+              constraints: BoxConstraints(maxWidth: 250.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 8,
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.r),
+                child: Image.file(
+                  File(msg.imageUrl!),
+                  width: 200.w,
+                  height: 200.h,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    width: 200.w,
+                    height: 200.h,
+                    color: Colors.grey[300],
+                    child: const Icon(Icons.broken_image, color: Colors.grey),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          _timestampWidget(index, msg.time, alignRight: msg.isMe),
+        ],
+      ),
     );
   }
 
@@ -332,9 +414,8 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
           ? Padding(
               padding: EdgeInsets.only(top: 4.h, left: alignRight ? 0 : 44.w),
               child: Align(
-                alignment: alignRight
-                    ? Alignment.centerRight
-                    : Alignment.centerLeft,
+                alignment:
+                    alignRight ? Alignment.centerRight : Alignment.centerLeft,
                 child: Text(
                   _formatTime(time),
                   style: TextStyle(fontSize: 11.sp, color: Colors.black38),
@@ -342,105 +423,6 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
               ),
             )
           : const SizedBox.shrink(),
-    );
-  }
-
-  // ── Seller intro bubble ──────────────────────
-  Widget _buildSellerIntroMessage(_ChatMessage msg, int index) {
-    return GestureDetector(
-      onTap: () => _toggleTimestamp(index),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 36.w,
-                height: 36.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/profile_image.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(width: 8.w),
-              Container(
-                constraints: BoxConstraints(maxWidth: 220.w),
-                padding: EdgeInsets.all(12.w),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(2.r),
-                    topRight: Radius.circular(16.r),
-                    bottomLeft: Radius.circular(16.r),
-                    bottomRight: Radius.circular(16.r),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.06),
-                      blurRadius: 8,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Hi, I'm liz6266",
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    SizedBox(height: 4.h),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on_outlined,
-                          size: 13.sp,
-                          color: Colors.black45,
-                        ),
-                        SizedBox(width: 2.w),
-                        Text(
-                          "Italy, Verona",
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.black45,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.access_time,
-                          size: 13.sp,
-                          color: Colors.black45,
-                        ),
-                        SizedBox(width: 2.w),
-                        Text(
-                          "Last seen 55 min ago",
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.black45,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          _timestampWidget(index, msg.time, alignRight: false),
-        ],
-      ),
     );
   }
 
@@ -541,7 +523,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                 ),
               ),
               child: Text(
-                msg.text,
+                msg.text ?? "",
                 style: TextStyle(fontSize: 14.sp, color: Colors.white),
               ),
             ),
@@ -569,7 +551,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                   shape: BoxShape.circle,
                   color: Colors.grey[300],
                   image: const DecorationImage(
-                    image: AssetImage('assets/images/profile_image.png'),
+                    image: AssetImage('assets/images/profile_icon.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -594,7 +576,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                   ],
                 ),
                 child: Text(
-                  msg.text,
+                  msg.text ?? "",
                   style: TextStyle(fontSize: 14.sp, color: Colors.black87),
                 ),
               ),
@@ -694,7 +676,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
         child: Row(
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () => _pickImage(ImageSource.gallery),
               child: Icon(
                 Icons.add_circle_outline,
                 size: 26.sp,
@@ -703,7 +685,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
             ),
             SizedBox(width: 8.w),
             GestureDetector(
-              onTap: () {},
+              onTap: () => _pickImage(ImageSource.camera),
               child: Icon(
                 Icons.camera_alt_outlined,
                 size: 24.sp,
