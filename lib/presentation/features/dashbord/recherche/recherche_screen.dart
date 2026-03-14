@@ -65,25 +65,40 @@ class _RechercheScreenState extends State<RechercheScreen> {
                   ],
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.search,
                       color: AppColors.textGrey,
                       size: 24,
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
-                        'Search for items or members',
-                        style: TextStyle(
-                          color: AppColors.textGrey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
+                      child: Theme(
+                        data: Theme.of(context).copyWith(
+                          textSelectionTheme: TextSelectionThemeData(
+                            cursorColor: AppColors.buttonPrimary,
+                            selectionColor: AppColors.buttonPrimary.withOpacity(0.3),
+                            selectionHandleColor: AppColors.buttonPrimary,
+                          ),
+                        ),
+                        child: const TextField(
+                          cursorColor: AppColors.buttonPrimary,
+                          decoration: InputDecoration(
+                            hintText: 'Search for items or members',
+                            hintStyle: TextStyle(
+                              color: AppColors.textGrey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            border: InputBorder.none,
+                            isDense: true,
+                            contentPadding: EdgeInsets.zero,
+                          ),
                         ),
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.camera_alt_outlined,
                       color: AppColors.buttonPrimary,
                       size: 24,
