@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  final VoidCallback? onSearchTapped;
+
+  HomeScreen({Key? key, this.onSearchTapped}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -224,13 +226,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            child: CustomTextField(
-              label: '',
-              showLabel: false,
-              hint: AppStrings.searchHint,
-              borderRadius: 15.r,
-              prefixIcon: const Icon(Icons.search, color: Colors.black38),
-            ),
+              child: GestureDetector(
+                onTap: widget.onSearchTapped,
+                child: AbsorbPointer(
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      textSelectionTheme: TextSelectionThemeData(
+                        cursorColor: AppColors.buttonPrimary,
+                        selectionColor: AppColors.buttonPrimary.withOpacity(0.3),
+                        selectionHandleColor: AppColors.buttonPrimary,
+                      ),
+                    ),
+                    child: CustomTextField(
+                      label: '',
+                      showLabel: false,
+                      hint: AppStrings.searchHint,
+                      borderRadius: 15.r,
+                      prefixIcon: const Icon(Icons.search, color: Colors.black38),
+                    ),
+                  ),
+                ),
+              ),
           ),
         ),
         SizedBox(width: 15.w),

@@ -18,9 +18,8 @@ class CustomBottomBar extends StatefulWidget {
 class _CustomBottomBarState extends State<CustomBottomBar> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    HomeScreen(),
-
+  late final List<Widget> _screens = [
+    HomeScreen(onSearchTapped: () => _onItemTapped(1)),
     const RechercheScreen(),
     const VendoreScreen(),
     const MessageScreen(),

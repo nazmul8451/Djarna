@@ -83,6 +83,7 @@ class _RechercheScreenState extends State<RechercheScreen> {
                           ),
                         ),
                         child: const TextField(
+                          autofocus: true,
                           cursorColor: AppColors.buttonPrimary,
                           decoration: InputDecoration(
                             hintText: 'Search for items or members',
