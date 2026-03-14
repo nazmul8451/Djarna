@@ -45,6 +45,7 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.backgroundLight,
         elevation: 0,
         leading: IconButton(

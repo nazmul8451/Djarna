@@ -148,7 +148,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
           if (_showSafetyTip) _buildSafetyTip(),
           _buildMessageInput(),
         ],
-      ),
+      ),  
     );
   }
 
