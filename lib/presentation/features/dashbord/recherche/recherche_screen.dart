@@ -19,7 +19,8 @@ class _RechercheScreenState extends State<RechercheScreen> {
   final List<CategoryModel> categories = [
     CategoryModel(
       title: 'FASHION',
-      imageUrl: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=600&auto=format&fit=crop',
+      imageUrl:
+          'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=600&auto=format&fit=crop',
     ),
     CategoryModel(
       title: 'BEAUTY',
@@ -27,15 +28,18 @@ class _RechercheScreenState extends State<RechercheScreen> {
     ),
     CategoryModel(
       title: 'KIDS & BABY',
-      imageUrl: 'https://images.unsplash.com/photo-1503919005314-30d93d07d823?q=80&w=600&auto=format&fit=crop',
+      imageUrl:
+          'https://images.unsplash.com/photo-1503919005314-30d93d07d823?q=80&w=600&auto=format&fit=crop',
     ),
     CategoryModel(
       title: 'HOME DECOR',
-      imageUrl: 'https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=600&auto=format&fit=crop',
+      imageUrl:
+          'https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=600&auto=format&fit=crop',
     ),
     CategoryModel(
       title: 'SECOND HAND',
-      imageUrl: 'https://images.unsplash.com/photo-1521335629791-ce4aec67dd15?q=80&w=600&auto=format&fit=crop',
+      imageUrl:
+          'https://images.unsplash.com/photo-1521335629791-ce4aec67dd15?q=80&w=600&auto=format&fit=crop',
     ),
   ];
 
@@ -78,7 +82,9 @@ class _RechercheScreenState extends State<RechercheScreen> {
                         data: Theme.of(context).copyWith(
                           textSelectionTheme: TextSelectionThemeData(
                             cursorColor: AppColors.buttonPrimary,
-                            selectionColor: AppColors.buttonPrimary.withOpacity(0.3),
+                            selectionColor: AppColors.buttonPrimary.withOpacity(
+                              0.3,
+                            ),
                             selectionHandleColor: AppColors.buttonPrimary,
                           ),
                         ),

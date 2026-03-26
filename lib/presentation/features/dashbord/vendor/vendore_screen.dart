@@ -21,14 +21,15 @@ class _VendoreScreenState extends State<VendoreScreen> {
 
   static const _goldColor = Color(0xFFB58322);
   static const _categories = [
-    'Clothing & Apparel',
+    'Fashion',
+    'Beauty',
+    'Kids & Baby',
+    'Home & Decor',
+    'Second Hand',
     'Electronics',
-    'Home & Garden',
+    'Entertainment',
+    'Hobbies & Collectables',
     'Sports',
-    'Toys & Games',
-    'Books',
-    'Beauty & Health',
-    'Other',
   ];
 
   final _boostOptions = const [
@@ -354,30 +355,35 @@ class _VendoreScreenState extends State<VendoreScreen> {
         border: Border.all(color: _goldColor.withValues(alpha: 0.5)),
       ),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          isExpanded: true,
-          hint: Text(
-            'Select a category',
-            style: TextStyle(fontSize: 14.sp, color: Colors.black38),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: const Color.fromARGB(255, 255, 251, 241),
           ),
-          value: _selectedCategory,
-          icon: Icon(
-            Icons.keyboard_arrow_down_rounded,
-            color: Colors.black54,
-            size: 24.sp,
-          ),
-          items: _categories
-              .map(
-                (c) => DropdownMenuItem(
-                  value: c,
-                  child: Text(
-                    c,
-                    style: TextStyle(fontSize: 14.sp, color: Colors.black87),
+          child: DropdownButton<String>(
+            isExpanded: true,
+            hint: Text(
+              'Select a category',
+              style: TextStyle(fontSize: 14.sp, color: Colors.black38),
+            ),
+            value: _selectedCategory,
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: Colors.black54,
+              size: 24.sp,
+            ),
+            items: _categories
+                .map(
+                  (c) => DropdownMenuItem(
+                    value: c,
+                    child: Text(
+                      c,
+                      style: TextStyle(fontSize: 14.sp, color: Colors.black87),
+                    ),
                   ),
-                ),
-              )
-              .toList(),
-          onChanged: (val) => setState(() => _selectedCategory = val),
+                )
+                .toList(),
+            onChanged: (val) => setState(() => _selectedCategory = val),
+          ),
         ),
       ),
     );

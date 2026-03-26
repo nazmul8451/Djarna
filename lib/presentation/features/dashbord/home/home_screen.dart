@@ -226,27 +226,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-              child: GestureDetector(
-                onTap: widget.onSearchTapped,
-                child: AbsorbPointer(
-                  child: Theme(
-                    data: Theme.of(context).copyWith(
-                      textSelectionTheme: TextSelectionThemeData(
-                        cursorColor: AppColors.buttonPrimary,
-                        selectionColor: AppColors.buttonPrimary.withOpacity(0.3),
-                        selectionHandleColor: AppColors.buttonPrimary,
-                      ),
+            child: GestureDetector(
+              onTap: widget.onSearchTapped,
+              child: AbsorbPointer(
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    textSelectionTheme: TextSelectionThemeData(
+                      cursorColor: AppColors.buttonPrimary,
+                      selectionColor: AppColors.buttonPrimary.withOpacity(0.3),
+                      selectionHandleColor: AppColors.buttonPrimary,
                     ),
-                    child: CustomTextField(
-                      label: '',
-                      showLabel: false,
-                      hint: AppStrings.searchHint,
-                      borderRadius: 15.r,
-                      prefixIcon: const Icon(Icons.search, color: Colors.black38),
-                    ),
+                  ),
+                  child: CustomTextField(
+                    label: '',
+                    showLabel: false,
+                    hint: AppStrings.searchHint,
+                    borderRadius: 15.r,
+                    prefixIcon: const Icon(Icons.search, color: Colors.black38),
                   ),
                 ),
               ),
+            ),
           ),
         ),
         SizedBox(width: 15.w),
