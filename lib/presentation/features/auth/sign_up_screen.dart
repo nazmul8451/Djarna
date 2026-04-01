@@ -28,19 +28,19 @@ class SignUpScreen extends StatelessWidget {
                 width: 200.w,
               ),
               SizedBox(height: 8.h),
-              const Text(
+              Text(
                 AppStrings.signUp,
                 style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 32.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   letterSpacing: -0.5,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8.h),
+              Text(
                 AppStrings.accessMarketplace,
-                style: TextStyle(fontSize: 16, color: Colors.black54),
+                style: TextStyle(fontSize: 16.sp, color: Colors.black54),
               ),
               const SizedBox(height: 40),
               const CustomTextField(
@@ -103,9 +103,9 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     AppStrings.alreadyHaveAccount,
-                    style: TextStyle(fontSize: 14, color: Colors.black54),
+                    style: TextStyle(fontSize: 14.sp, color: Colors.black54),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -117,7 +117,7 @@ class SignUpScreen extends StatelessWidget {
                     child: Text(
                       AppStrings.login,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.buttonPrimary,
                       ),

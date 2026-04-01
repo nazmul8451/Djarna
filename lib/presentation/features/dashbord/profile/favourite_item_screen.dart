@@ -104,12 +104,13 @@ class _FavouriteItemScreenState extends State<FavouriteItemScreen> {
   }
 
   Widget _buildEmptyState() {
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
             Container(
               width: 120.w,
               height: 120.w,
@@ -167,10 +168,11 @@ class _FavouriteItemScreenState extends State<FavouriteItemScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 100.h,
-            ), // Offset to push it slightly up from true center
-          ],
+              SizedBox(
+                height: 100.h,
+              ), // Offset to push it slightly up from true center
+            ],
+          ),
         ),
       ),
     );

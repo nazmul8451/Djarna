@@ -49,26 +49,26 @@ class _VerifyNumberScreenState extends State<VerifyNumberScreen> {
                 width: 160.w,
               ),
               SizedBox(height: 8.h),
-              const Text(
+              Text(
                 AppStrings.verifyNumber,
                 style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 32.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   letterSpacing: -0.5,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8.h),
+              Text(
                 AppStrings.enterCodeSent,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.black54),
+                style: TextStyle(fontSize: 16.sp, color: Colors.black54),
               ),
-              const Text(
+              Text(
                 '+221 XX XXX XX XX',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),

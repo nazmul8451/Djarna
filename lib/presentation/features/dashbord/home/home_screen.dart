@@ -292,19 +292,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 // TODO: Trigger API filter search here
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.buttonPrimary : Colors.white,
                   borderRadius: BorderRadius.circular(25.r),
-                  boxShadow: isSelected
-                      ? [
-                          BoxShadow(
-                            color: AppColors.buttonPrimary.withOpacity(0.3),
-                            blurRadius: 10,
-                            offset: const Offset(0, 5),
-                          ),
-                        ]
-                      : [],
+                  border: Border.all(
+                    color: isSelected
+                        ? Colors.transparent
+                        : const Color(0xFFE2E8F0),
+                    width: 1,
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -329,15 +326,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? Colors.white.withOpacity(0.3)
-                            : AppColors.chipGrey,
+                            ? Colors.white.withOpacity(0.25)
+                            : const Color(0xFFF1F5F9),
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: Text(
                         cat['count'].toString(),
                         style: TextStyle(
-                          color: isSelected ? Colors.white : AppColors.textGrey,
+                          color: isSelected ? Colors.white : const Color(0xFF64748B),
                           fontSize: 10.sp,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -383,20 +381,20 @@ class _HomeScreenState extends State<HomeScreen> {
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                       text: AppStrings.discountUpTo,
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 28.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    const TextSpan(
+                    TextSpan(
                       text: "-50%",
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 28.sp,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFCC00),
+                        color: const Color(0xFFFFCC00),
                       ),
                     ),
                   ],

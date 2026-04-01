@@ -41,8 +41,7 @@ class FashionCategoryScreen extends StatelessWidget {
               child: _buildCategoryCard(
                 context,
                 title: 'WOMEN',
-                image:
-                    'assets/images/yellow_silk.png', // Placeholder high-quality image
+                image: 'assets/images/yellow_silk.png',
                 onTap: () => Navigator.pushNamed(
                   context,
                   '/sub-category',
@@ -55,8 +54,7 @@ class FashionCategoryScreen extends StatelessWidget {
               child: _buildCategoryCard(
                 context,
                 title: 'MEN',
-                image:
-                    'assets/images/seller_img.png', // Placeholder high-quality image
+                image: 'assets/images/seller_img.png',
                 onTap: () => Navigator.pushNamed(
                   context,
                   '/sub-category',
@@ -81,24 +79,45 @@ class FashionCategoryScreen extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.r),
+          borderRadius: BorderRadius.circular(35.r),
           image: DecorationImage(
             image: AssetImage(image),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.3),
+              Colors.black.withOpacity(0.35),
               BlendMode.darken,
             ),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 15,
+              offset: const Offset(0, 8),
+            ),
+          ],
         ),
         child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 42.sp,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              letterSpacing: 2.0,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                title.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 42.sp,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  letterSpacing: 2.0,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black.withOpacity(0.3),
+                      offset: const Offset(0, 2),
+                      blurRadius: 4,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),

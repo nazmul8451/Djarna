@@ -259,6 +259,8 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                   padding: EdgeInsets.all(16.w),
                   child: Text(
                     category['name']!,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.bold,
